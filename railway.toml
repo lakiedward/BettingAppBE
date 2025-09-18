@@ -1,5 +1,5 @@
 ﻿[build]
-buildCommand = "cd valuebet-backend && chmod +x gradlew && ./gradlew clean bootJar"
+buildCommand = "apt-get update && apt-get install -y openjdk-17-jdk && cd valuebet-backend && ./gradlew clean bootJar"
 
 [deploy]
 startCommand = "cd valuebet-backend && java -jar build/libs/valuebet-backend-0.0.1-SNAPSHOT.jar"
