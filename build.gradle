@@ -29,6 +29,12 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    mapstructVersion = '1.5.5.Final'
+    jjwtVersion = '0.11.5'
+    resilience4jVersion = '2.2.0'
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -37,23 +43,23 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.flywaydb:flyway-core'
-    implementation "io.github.resilience4j:resilience4j-spring-boot3:2.2.0"
-    implementation "io.github.resilience4j:resilience4j-timelimiter:2.2.0"
-    implementation "io.github.resilience4j:resilience4j-retry:2.2.0"
-    implementation "org.mapstruct:mapstruct:1.5.5.Final"
-    implementation "io.jsonwebtoken:jjwt-api:0.11.5"
+    implementation "io.github.resilience4j:resilience4j-spring-boot3:"
+    implementation "io.github.resilience4j:resilience4j-timelimiter:"
+    implementation "io.github.resilience4j:resilience4j-retry:"
+    implementation "org.mapstruct:mapstruct:"
+    implementation "io.jsonwebtoken:jjwt-api:"
 
     runtimeOnly 'org.postgresql:postgresql'
-    runtimeOnly "io.jsonwebtoken:jjwt-impl:0.11.5"
-    runtimeOnly "io.jsonwebtoken:jjwt-jackson:0.11.5"
+    runtimeOnly "io.jsonwebtoken:jjwt-impl:"
+    runtimeOnly "io.jsonwebtoken:jjwt-jackson:"
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    annotationProcessor "org.mapstruct:mapstruct-processor:1.5.5.Final"
+    annotationProcessor "org.mapstruct:mapstruct-processor:"
 
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
-    testAnnotationProcessor "org.mapstruct:mapstruct-processor:1.5.5.Final"
+    testAnnotationProcessor "org.mapstruct:mapstruct-processor:"
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
