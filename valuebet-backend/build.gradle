@@ -61,7 +61,8 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok'
     testAnnotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'\n    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.testcontainers:postgresql'
 }

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eb30735a-1dfa-4425-a464-4be8ddb78210" name="Changes" comment="Migrate `BettingAppBE` project to `valuebet-backend` structure with updated configurations, resource files, and mock data setup.">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/8.14.3/checksums/checksums.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/8.14.3/checksums/md5-checksums.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/8.14.3/checksums/sha1-checksums.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/8.14.3/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/8.14.3/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/8.14.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/8.14.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/8.14.3/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/8.14.3/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/file-system.probe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/build/lombok/effective-config/lombok-main.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/build/lombok/effective-config/lombok-test.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/build/reports/problems/problems-report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/build/resources/main/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/build/resources/main/db/migration/V1__create_core_tables.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/build/resources/main/db/migration/V2__bookmaker_and_value_opportunity_fields.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/build/resources/main/db/migration/V3__event_teams_and_bets.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/build/resources/main/db/migration/V4__users.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/valuebet-backend/build/resources/main/mock/odds.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bettingappbe/BettingAppBeApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/bettingappbe/BettingAppBeApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-backend/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-backend/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/valuebet-backend/src/main/java/com/valuebet/backend/scheduler/OddsScheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/valuebet-backend/src/main/java/com/valuebet/backend/scheduler/OddsScheduler.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;lakiedward&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/lakiedward/BettingAppBE.git&quot;,
+    &quot;accountId&quot;: &quot;7e177b40-e8b0-4366-a12e-fb262eeb9eaf&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="32pTeAMzCty8Li7EyMy3b7bj4uk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build BettingAppBE.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;Spring Boot.BettingAppBeApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="BettingAppBeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="BettingAppBE.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.bettingappbe.BettingAppBeApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eb30735a-1dfa-4425-a464-4be8ddb78210" name="Changes" comment="" />
+      <created>1758116609111</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1758116609111</updated>
+      <workItem from="1758116610235" duration="5453000" />
+    </task>
+    <task id="LOCAL-00001" summary="Introduce initial structure and functionality for the ValueBet backend. Includes configuration files, entity models, repository interfaces, service implementations, and tests.">
+      <option name="closed" value="true" />
+      <created>1758121928689</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758121928689</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add `libs.versions.toml` for dependency version management">
+      <option name="closed" value="true" />
+      <created>1758196757181</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758196757181</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Introduce initial structure and functionality for the ValueBet backend. Includes configuration files, entity models, repository interfaces, service implementations, and tests." />
+    <MESSAGE value="Add `libs.versions.toml` for dependency version management" />
+    <MESSAGE value="Migrate `BettingAppBE` project to `valuebet-backend` structure with updated configurations, resource files, and mock data setup." />
+    <option name="LAST_COMMIT_MESSAGE" value="Migrate `BettingAppBE` project to `valuebet-backend` structure with updated configurations, resource files, and mock data setup." />
+  </component>
+</project>

@@ -16,7 +16,7 @@ public class OddsScheduler {
     private final OddsIngestionService oddsIngestionService;
     private final ValuebetProperties valuebetProperties;
 
-    @Scheduled(fixedDelay = "30s")
+    @Scheduled(fixedDelayString = "PT30S")
     public void captureOdds() {
         Duration horizon = valuebetProperties.ingestionHorizon();
         try {
