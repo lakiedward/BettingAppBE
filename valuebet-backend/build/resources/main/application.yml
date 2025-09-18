@@ -26,6 +26,7 @@ integration:
     sports-endpoint: /sports
     odds-endpoint: /sports/{sport}/odds
     default-sport: soccer_epl
+    api-key: ${THE_ODDS_API_KEY:}
     connect-timeout: 2s
     read-timeout: 5s
     retry:

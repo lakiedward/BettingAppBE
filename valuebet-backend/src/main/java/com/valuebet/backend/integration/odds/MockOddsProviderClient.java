@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Primary
-@Profile("dev")
+@Profile("mock")
 @RequiredArgsConstructor
 public class MockOddsProviderClient implements OddsProviderClient {
 

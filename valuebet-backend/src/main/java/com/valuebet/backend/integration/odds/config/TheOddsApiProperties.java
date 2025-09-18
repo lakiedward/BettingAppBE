@@ -11,6 +11,7 @@ public record TheOddsApiProperties(
     String sportsEndpoint,
     String oddsEndpoint,
     String defaultSport,
+    String apiKey,
     Duration connectTimeout,
     Duration readTimeout,
     RetryProperties retry,
@@ -22,6 +23,7 @@ public record TheOddsApiProperties(
         Objects.requireNonNull(sportsEndpoint, "sportsEndpoint is required");
         Objects.requireNonNull(oddsEndpoint, "oddsEndpoint is required");
         Objects.requireNonNull(defaultSport, "defaultSport is required");
+        Objects.requireNonNull(apiKey, "apiKey is required");
         Objects.requireNonNull(connectTimeout, "connectTimeout is required");
         Objects.requireNonNull(readTimeout, "readTimeout is required");
         Objects.requireNonNull(retry, "retry configuration is required");

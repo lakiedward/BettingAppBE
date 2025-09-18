@@ -42,7 +42,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class OddsIngestionService {
 
-    private static final double MIN_EXPECTED_VALUE_THRESHOLD = 0.02d;
+    private static final double MIN_EXPECTED_VALUE_THRESHOLD = 0.015d;
     private static final Duration CLOSING_WINDOW = Duration.ofMinutes(5);
 
     private final OddsProviderClient oddsProviderClient;
