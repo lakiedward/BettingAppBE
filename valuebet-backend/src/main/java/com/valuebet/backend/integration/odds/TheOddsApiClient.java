@@ -57,11 +57,15 @@ public class TheOddsApiClient implements OddsProviderClient {
 
     @Override
     public List<ProviderOddsDto> fetchUpcomingOdds(Duration horizon) {
-        return retry.executeSupplier(() ->
-            timeLimiter.executeFutureSupplier(() ->
-                CompletableFuture.supplyAsync(() -> doFetchUpcomingOdds(horizon))
-            )
-        );
+        return retry.executeSupplier(() -> {
+            try {
+                return timeLimiter.executeFutureSupplier(() ->
+                    CompletableFuture.supplyAsync(() -> doFetchUpcomingOdds(horizon))
+                );
+            } catch (Exception ex) {
+                throw new IllegalStateException("Failed to fetch odds within time limit", ex);
+            }
+        });
     }
 
     private List<ProviderOddsDto> doFetchUpcomingOdds(Duration horizon) {
