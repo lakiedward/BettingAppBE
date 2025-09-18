@@ -1,3 +1,6 @@
+﻿server:
+  port: ${PORT:8080}
+
 spring:
   application:
     name: valuebet-backend

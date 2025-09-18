@@ -1,0 +1,5 @@
+﻿[build]
+buildCommand = "cd valuebet-backend && chmod +x gradlew && ./gradlew clean bootJar"
+
+[deploy]
+startCommand = "cd valuebet-backend && java -jar build/libs/valuebet-backend-0.0.1-SNAPSHOT.jar"
