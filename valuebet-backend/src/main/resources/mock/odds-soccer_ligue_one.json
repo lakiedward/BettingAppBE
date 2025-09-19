@@ -1,0 +1,66 @@
+[
+  {
+    "league": "Ligue 1",
+    "homeTeam": "PSG",
+    "awayTeam": "Marseille",
+    "startTime": "2025-09-27T20:45:00Z",
+    "bookmakers": [
+      {
+        "bookmakerKey": "bookmaker_1",
+        "odds": {
+          "ONE": 1.45,
+          "DRAW": 4.3,
+          "TWO": 6.5
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_2",
+        "odds": {
+          "ONE": 1.48,
+          "DRAW": 4.4,
+          "TWO": 6.3
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_3",
+        "odds": {
+          "ONE": 1.5,
+          "DRAW": 4.35,
+          "TWO": 6.4
+        }
+      }
+    ]
+  },
+  {
+    "league": "Ligue 1",
+    "homeTeam": "Lyon",
+    "awayTeam": "Monaco",
+    "startTime": "2025-09-28T19:00:00Z",
+    "bookmakers": [
+      {
+        "bookmakerKey": "bookmaker_1",
+        "odds": {
+          "ONE": 2.2,
+          "DRAW": 3.3,
+          "TWO": 3.4
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_2",
+        "odds": {
+          "ONE": 2.18,
+          "DRAW": 3.35,
+          "TWO": 3.45
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_3",
+        "odds": {
+          "ONE": 2.25,
+          "DRAW": 3.25,
+          "TWO": 3.5
+        }
+      }
+    ]
+  }
+]
