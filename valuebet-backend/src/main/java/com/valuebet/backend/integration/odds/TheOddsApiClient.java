@@ -1,5 +1,6 @@
 package com.valuebet.backend.integration.odds;
 
+import com.valuebet.backend.config.ValuebetProperties;
 import com.valuebet.backend.domain.model.MarketType;
 import com.valuebet.backend.domain.model.Outcome;
 import com.valuebet.backend.integration.odds.config.TheOddsApiProperties;
@@ -20,6 +21,7 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -50,12 +52,15 @@ public class TheOddsApiClient implements OddsProviderClient {
     private final TheOddsApiProperties properties;
     private final Retry retry;
     private final TimeLimiter timeLimiter;
+    private final ValuebetProperties valuebetProperties;
 
     public TheOddsApiClient(RestTemplateBuilder restTemplateBuilder,
                             TheOddsApiProperties properties,
+                            ValuebetProperties valuebetProperties,
                             RetryRegistry retryRegistry,
                             TimeLimiterRegistry timeLimiterRegistry) {
         this.properties = properties;
+        this.valuebetProperties = valuebetProperties;
         this.restTemplate = restTemplateBuilder
             .setConnectTimeout(properties.connectTimeout())
             .setReadTimeout(properties.readTimeout())
@@ -86,24 +91,50 @@ public class TheOddsApiClient implements OddsProviderClient {
     }
 
     private List<ProviderOddsDto> doFetchUpcomingOdds(Duration horizon) {
-        URI uri = buildOddsUri(horizon);
-        log.debug("Fetching odds feed for sport {}", properties.defaultSport());
-        log.info("Making API request to: {}", uri.toString());
-        ResponseEntity<List<TheOddsApiEventDto>> response = restTemplate.exchange(
-            uri,
-            HttpMethod.GET,
-            null,
-            EVENT_RESPONSE_TYPE
-        );
-        List<TheOddsApiEventDto> events = Optional.ofNullable(response.getBody()).orElse(Collections.emptyList());
-        log.info("Received {} events from API", events.size());
-        List<ProviderOddsDto> providerOdds = events.stream()
+        List<String> leagueKeys = resolveTrackedLeagueKeys();
+        LinkedHashSet<ProviderOddsDto> aggregatedOdds = new LinkedHashSet<>();
+
+        for (String leagueKey : leagueKeys) {
+            URI uri = buildOddsUri(horizon, leagueKey);
+            log.debug("Fetching odds feed for league {}", leagueKey);
+            log.info("Making API request to: {}", uri);
+            ResponseEntity<List<TheOddsApiEventDto>> response = restTemplate.exchange(
+                uri,
+                HttpMethod.GET,
+                null,
+                EVENT_RESPONSE_TYPE
+            );
+            List<TheOddsApiEventDto> events = Optional.ofNullable(response.getBody()).orElse(Collections.emptyList());
+            log.info("Received {} events from API for league {}", events.size(), leagueKey);
+            List<ProviderOddsDto> providerOdds = events.stream()
+                .filter(Objects::nonNull)
+                .flatMap(event -> toProviderOdds(event).stream())
+                .collect(Collectors.toList());
+            log.info("Mapped to {} provider odds for league {}", providerOdds.size(), leagueKey);
+            aggregatedOdds.addAll(providerOdds);
+        }
+
+        log.info("Aggregated {} provider odds across {} leagues", aggregatedOdds.size(), leagueKeys.size());
+        return List.copyOf(aggregatedOdds);
+    }
+
+    private List<String> resolveTrackedLeagueKeys() {
+        List<String> trackedLeagues = Optional.ofNullable(valuebetProperties)
+            .map(ValuebetProperties::filter)
+            .map(ValuebetProperties.FilterProperties::trackedLeagues)
+            .orElse(List.of());
+
+        LinkedHashSet<String> normalized = trackedLeagues.stream()
             .filter(Objects::nonNull)
-            .flatMap(event -> toProviderOdds(event).stream())
-            .collect(Collectors.toList());
-        long mappedCount = providerOdds.size();
-        log.info("Mapped to {} provider odds", mappedCount);
-        return providerOdds;
+            .map(String::trim)
+            .filter(value -> !value.isEmpty())
+            .collect(Collectors.toCollection(LinkedHashSet::new));
+
+        if (normalized.isEmpty()) {
+            return List.of(properties.defaultSport());
+        }
+
+        return List.copyOf(normalized);
     }
 
     private List<ProviderOddsDto> toProviderOdds(TheOddsApiEventDto event) {
@@ -276,7 +307,7 @@ public class TheOddsApiClient implements OddsProviderClient {
         return trimmed.isEmpty() ? null : trimmed.toLowerCase(Locale.ROOT);
     }
 
-    private URI buildOddsUri(Duration horizon) {
+    private URI buildOddsUri(Duration horizon, String leagueKey) {
         UriComponentsBuilder builder = UriComponentsBuilder
             .fromUri(properties.baseUrl())
             .path(properties.oddsEndpoint())
@@ -293,8 +324,13 @@ public class TheOddsApiClient implements OddsProviderClient {
                 .queryParam("dateFormat", "iso8601")
                 .queryParam("to", end.toString()));
 
+        String resolvedLeagueKey = Optional.ofNullable(leagueKey)
+            .map(String::trim)
+            .filter(value -> !value.isEmpty())
+            .orElse(properties.defaultSport());
+
         return builder
-            .buildAndExpand(properties.defaultSport())
+            .buildAndExpand(resolvedLeagueKey)
             .toUri();
     }
 }

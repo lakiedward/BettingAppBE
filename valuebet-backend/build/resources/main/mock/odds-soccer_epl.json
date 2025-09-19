@@ -1,0 +1,66 @@
+[
+  {
+    "league": "English Premier League",
+    "homeTeam": "Arsenal",
+    "awayTeam": "Liverpool",
+    "startTime": "2025-09-18T14:00:00Z",
+    "bookmakers": [
+      {
+        "bookmakerKey": "bookmaker_1",
+        "odds": {
+          "ONE": 1.65,
+          "DRAW": 3.8,
+          "TWO": 4.9
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_2",
+        "odds": {
+          "ONE": 1.7,
+          "DRAW": 3.9,
+          "TWO": 4.8
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_3",
+        "odds": {
+          "ONE": 1.68,
+          "DRAW": 3.85,
+          "TWO": 4.95
+        }
+      }
+    ]
+  },
+  {
+    "league": "English Premier League",
+    "homeTeam": "Manchester City",
+    "awayTeam": "Chelsea",
+    "startTime": "2025-09-21T16:30:00Z",
+    "bookmakers": [
+      {
+        "bookmakerKey": "bookmaker_1",
+        "odds": {
+          "ONE": 1.55,
+          "DRAW": 4.1,
+          "TWO": 5.3
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_2",
+        "odds": {
+          "ONE": 1.6,
+          "DRAW": 4.05,
+          "TWO": 5.2
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_3",
+        "odds": {
+          "ONE": 1.58,
+          "DRAW": 4.0,
+          "TWO": 5.4
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "league": "Bundesliga",
+    "homeTeam": "Bayern Munich",
+    "awayTeam": "Borussia Dortmund",
+    "startTime": "2025-09-25T18:30:00Z",
+    "bookmakers": [
+      {
+        "bookmakerKey": "bookmaker_1",
+        "odds": {
+          "ONE": 1.75,
+          "DRAW": 3.6,
+          "TWO": 4.4
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_2",
+        "odds": {
+          "ONE": 1.72,
+          "DRAW": 3.55,
+          "TWO": 4.5
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_3",
+        "odds": {
+          "ONE": 1.78,
+          "DRAW": 3.65,
+          "TWO": 4.35
+        }
+      }
+    ]
+  },
+  {
+    "league": "Bundesliga",
+    "homeTeam": "RB Leipzig",
+    "awayTeam": "Leverkusen",
+    "startTime": "2025-09-26T19:30:00Z",
+    "bookmakers": [
+      {
+        "bookmakerKey": "bookmaker_1",
+        "odds": {
+          "ONE": 2.05,
+          "DRAW": 3.5,
+          "TWO": 3.6
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_2",
+        "odds": {
+          "ONE": 2.1,
+          "DRAW": 3.55,
+          "TWO": 3.55
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_3",
+        "odds": {
+          "ONE": 2.08,
+          "DRAW": 3.45,
+          "TWO": 3.65
+        }
+      }
+    ]
+  }
+]
