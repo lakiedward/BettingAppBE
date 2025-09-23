@@ -10,9 +10,11 @@ import java.time.Duration;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,43 +33,69 @@ public class MockOddsProviderClient implements OddsProviderClient {
 
     private final ObjectMapper objectMapper;
 
-    @Value("classpath:mock/odds.json")
-    private Resource oddsResource;
+    @Value("classpath*:mock/odds-*.json")
+    private Resource[] oddsResources;
 
-    private final AtomicReference<List<MockEvent>> cache = new AtomicReference<>();
+    private final AtomicReference<Map<String, List<MockEvent>>> cache = new AtomicReference<>();
 
     @Override
     public List<ProviderOddsDto> fetchUpcomingOdds(Duration horizon) {
-        List<MockEvent> events = loadFixtures();
-        if (events.isEmpty()) {
+        Map<String, List<MockEvent>> eventsByLeague = loadFixtures();
+        if (eventsByLeague.isEmpty()) {
             return Collections.emptyList();
         }
 
         OffsetDateTime now = OffsetDateTime.now(ZoneOffset.UTC);
         OffsetDateTime cutoff = horizon == null ? null : now.plus(horizon);
 
-        return events.stream()
+        return eventsByLeague.values().stream()
+            .flatMap(List::stream)
             .filter(event -> cutoff == null || !event.startTime().isAfter(cutoff))
             .limit(20)
             .flatMap(MockEvent::toOddsStream)
             .collect(Collectors.toList());
     }
 
-    private List<MockEvent> loadFixtures() {
-        List<MockEvent> cached = cache.get();
+    private Map<String, List<MockEvent>> loadFixtures() {
+        Map<String, List<MockEvent>> cached = cache.get();
         if (cached != null) {
             return cached;
         }
         try {
-            List<MockEvent> loaded = objectMapper.readValue(
-                oddsResource.getInputStream(),
-                new TypeReference<List<MockEvent>>() { }
-            );
-            cache.compareAndSet(null, loaded);
-            return loaded;
+            Map<String, List<MockEvent>> loaded = new LinkedHashMap<>();
+            if (oddsResources != null) {
+                for (Resource resource : oddsResources) {
+                    if (resource == null || !resource.exists()) {
+                        continue;
+                    }
+                    String leagueKey = extractLeagueKey(resource);
+                    List<MockEvent> events = Optional.ofNullable(objectMapper.readValue(
+                            resource.getInputStream(),
+                            new TypeReference<List<MockEvent>>() { }
+                        ))
+                        .orElseGet(List::of);
+                    loaded.put(leagueKey, List.copyOf(events));
+                }
+            }
+            Map<String, List<MockEvent>> immutable = Map.copyOf(loaded);
+            if (cache.compareAndSet(null, immutable)) {
+                return immutable;
+            }
+            return cache.get();
         } catch (IOException e) {
             throw new IllegalStateException("Failed to load mock odds fixture", e);
         }
+    }
+
+    private String extractLeagueKey(Resource resource) {
+        String filename = resource.getFilename();
+        if (filename == null) {
+            throw new IllegalStateException("Mock odds resource without filename: " + resource.getDescription());
+        }
+        if (filename.startsWith("odds-") && filename.endsWith(".json")) {
+            return filename.substring(5, filename.length() - 5);
+        }
+        throw new IllegalStateException("Unsupported mock odds resource name: " + filename);
     }
 
     private record MockEvent(

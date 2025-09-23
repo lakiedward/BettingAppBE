@@ -1,0 +1,66 @@
+[
+  {
+    "league": "La Liga",
+    "homeTeam": "Real Madrid",
+    "awayTeam": "Barcelona",
+    "startTime": "2025-09-19T20:00:00Z",
+    "bookmakers": [
+      {
+        "bookmakerKey": "bookmaker_1",
+        "odds": {
+          "ONE": 2.1,
+          "DRAW": 3.5,
+          "TWO": 3.2
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_2",
+        "odds": {
+          "ONE": 2.05,
+          "DRAW": 3.6,
+          "TWO": 3.25
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_3",
+        "odds": {
+          "ONE": 2.15,
+          "DRAW": 3.45,
+          "TWO": 3.3
+        }
+      }
+    ]
+  },
+  {
+    "league": "La Liga",
+    "homeTeam": "Atletico Madrid",
+    "awayTeam": "Sevilla",
+    "startTime": "2025-09-22T18:45:00Z",
+    "bookmakers": [
+      {
+        "bookmakerKey": "bookmaker_1",
+        "odds": {
+          "ONE": 1.9,
+          "DRAW": 3.4,
+          "TWO": 4.1
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_2",
+        "odds": {
+          "ONE": 1.95,
+          "DRAW": 3.35,
+          "TWO": 4.0
+        }
+      },
+      {
+        "bookmakerKey": "bookmaker_3",
+        "odds": {
+          "ONE": 1.92,
+          "DRAW": 3.3,
+          "TWO": 4.2
+        }
+      }
+    ]
+  }
+]
